@@ -25,6 +25,9 @@ The student service is used to retrieve details of each student, this includes s
 ### Book information service (SOAP)
 The book information service is used to query Google Books APIs to get detail information about books, such as author, publish date and title.		
 
+### Booking Application
+A web client using jQuery/Ajax to communicate with the services
+
 ## Book ordering request/response
 The book ordering request contains the following information:
 * Student ID of the student who made the request
