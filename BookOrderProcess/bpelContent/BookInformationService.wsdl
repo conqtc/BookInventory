@@ -1,0 +1,50 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://waa.a2.bookinformation" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://waa.a2.bookinformation">
+    <wsdl:documentation>BookInformationService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://waa.a2.bookinformation">
+            <xs:element name="getBookInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getBookInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getBookInfoRequest">
+        <wsdl:part name="parameters" element="ns:getBookInfo"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getBookInfoResponse">
+        <wsdl:part name="parameters" element="ns:getBookInfoResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="BookInformationServicePortType">
+        <wsdl:operation name="getBookInfo">
+            <wsdl:input message="ns:getBookInfoRequest" wsaw:Action="urn:getBookInfo"></wsdl:input>
+            <wsdl:output message="ns:getBookInfoResponse" wsaw:Action="urn:getBookInfoResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BookInformationServiceBinding" type="ns:BookInformationServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <wsdl:operation name="getBookInfo">
+            <soap:operation soapAction="urn:getBookInfo" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BookInformationService">
+        <wsdl:port name="BookInformationServicePort" binding="ns:BookInformationServiceBinding">
+            <soap:address location="http://localhost:9763/services/BookInformationService.BookInformationServiceHttpSoap11Endpoint/"></soap:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

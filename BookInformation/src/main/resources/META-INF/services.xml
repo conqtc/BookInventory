@@ -1,0 +1,10 @@
+<service name="BookInformationService">
+	<description>
+		Please Type your service description here
+	</description>
+	<messageReceivers>
+		<messageReceiver class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" mep="http://www.w3.org/2004/08/wsdl/in-only"/>
+		<messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" mep="http://www.w3.org/2004/08/wsdl/in-out"/>
+	</messageReceivers>
+	<parameter locked="false" name="ServiceClass">bookinformation.a2.waa.BookInformationService</parameter>
+</service>

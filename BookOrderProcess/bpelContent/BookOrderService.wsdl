@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:ns="http://www.example.org/BookOrderService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BookOrderService" targetNamespace="http://www.example.org/BookOrderService/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/BookOrderService/">
+      <xsd:element name="orderBook">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="studentid" type="xsd:string" />
+          	<xsd:element name="pin" type="xsd:string"></xsd:element>
+          	<xsd:element name="isbn" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="orderBookResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="status" type="xsd:string" />
+          	<xsd:element name="title" type="xsd:string"></xsd:element>
+          	<xsd:element name="authors" type="xsd:string"></xsd:element>
+          	<xsd:element name="publisher" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="orderBookRequest">
+    <wsdl:part element="ns:orderBook" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="orderBookResponse">
+    <wsdl:part element="ns:orderBookResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="BookOrderServicePortType">
+    <wsdl:operation name="orderBook">
+      <wsdl:input message="ns:orderBookRequest"/>
+      <wsdl:output message="ns:orderBookResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BookOrderServiceBinding" type="ns:BookOrderServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="orderBook">
+      <soap:operation soapAction="http://www.example.org/BookOrderService/orderBook"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BookOrderService">
+    <wsdl:port binding="ns:BookOrderServiceBinding" name="BookOrderServicePort">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

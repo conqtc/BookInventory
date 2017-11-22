@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://a2.waa/BookOrderArtifacts" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://www.example.org/BookOrderService/" xmlns:wsdl1="http://waa.a2.studentservice" xmlns:wsdl2="http://waa.a2.bookinventory" xmlns:wsdl3="http://waa.a2.bookinformation" name="BookOrderProcessArtifacts" targetNamespace="http://a2.waa/BookOrderArtifacts" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <plnk:partnerLinkType name="BookOrderPLT">
+    <plnk:role name="BookOrderRole" portType="wsdl:BookOrderServicePortType"/>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="StudentServicePLT">
+    <plnk:role name="StudentServiceRole" portType="wsdl1:StudentServicePortType"/>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="BookInventoryServicePLT">
+    <plnk:role name="BookInventoryServiceRole" portType="wsdl2:BookInventoryServicePortType"/>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="BookInformationServicePLT">
+    <plnk:role name="BookInformationServiceRole" portType="wsdl3:BookInformationServicePortType"/>
+  </plnk:partnerLinkType>
+  <import location="BookOrderService.wsdl" namespace="http://www.example.org/BookOrderService/"/>
+  <import location="StudentService.wsdl" namespace="http://waa.a2.studentservice"/>
+  <import location="BookInventoryService.wsdl" namespace="http://waa.a2.bookinventory"/>
+  <import location="BookInformationService.wsdl" namespace="http://waa.a2.bookinformation"/>
+</definitions>

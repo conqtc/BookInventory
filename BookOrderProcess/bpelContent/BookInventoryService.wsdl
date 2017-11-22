@@ -1,0 +1,151 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://waa.a2.bookinventory" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://waa.a2.bookinventory">
+    <wsdl:documentation>BookInventoryService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://waa.a2.bookinventory">
+            <xs:element name="viewBook">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="bookId" type="xs:int"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="viewBookResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="viewAllBooks">
+                <xs:complexType>
+                    <xs:sequence></xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="viewAllBooksResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addOrderBook">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="author" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="publisher" nillable="true" type="xs:string"></xs:element>
+                        <xs:element minOccurs="0" name="pdate" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addOrderBookResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="validateBook">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="validateBookResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="viewBookRequest">
+        <wsdl:part name="parameters" element="ns:viewBook"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="viewBookResponse">
+        <wsdl:part name="parameters" element="ns:viewBookResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="validateBookRequest">
+        <wsdl:part name="parameters" element="ns:validateBook"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="validateBookResponse">
+        <wsdl:part name="parameters" element="ns:validateBookResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="viewAllBooksRequest">
+        <wsdl:part name="parameters" element="ns:viewAllBooks"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="viewAllBooksResponse">
+        <wsdl:part name="parameters" element="ns:viewAllBooksResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addOrderBookRequest">
+        <wsdl:part name="parameters" element="ns:addOrderBook"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addOrderBookResponse">
+        <wsdl:part name="parameters" element="ns:addOrderBookResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="BookInventoryServicePortType">
+        <wsdl:operation name="viewBook">
+            <wsdl:input message="ns:viewBookRequest" wsaw:Action="urn:viewBook"></wsdl:input>
+            <wsdl:output message="ns:viewBookResponse" wsaw:Action="urn:viewBookResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="validateBook">
+            <wsdl:input message="ns:validateBookRequest" wsaw:Action="urn:validateBook"></wsdl:input>
+            <wsdl:output message="ns:validateBookResponse" wsaw:Action="urn:validateBookResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="viewAllBooks">
+            <wsdl:input message="ns:viewAllBooksRequest" wsaw:Action="urn:viewAllBooks"></wsdl:input>
+            <wsdl:output message="ns:viewAllBooksResponse" wsaw:Action="urn:viewAllBooksResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addOrderBook">
+            <wsdl:input message="ns:addOrderBookRequest" wsaw:Action="urn:addOrderBook"></wsdl:input>
+            <wsdl:output message="ns:addOrderBookResponse" wsaw:Action="urn:addOrderBookResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="BookInventoryServiceBinding" type="ns:BookInventoryServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+        <wsdl:operation name="viewBook">
+            <soap:operation soapAction="urn:viewBook" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="validateBook">
+            <soap:operation soapAction="urn:validateBook" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="viewAllBooks">
+            <soap:operation soapAction="urn:viewAllBooks" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addOrderBook">
+            <soap:operation soapAction="urn:addOrderBook" style="document"></soap:operation>
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="BookInventoryService">
+        <wsdl:port name="BookInventoryServicePort" binding="ns:BookInventoryServiceBinding">
+            <soap:address location="http://localhost:9763/services/BookInventoryService.BookInventoryServiceHttpSoap11Endpoint/"></soap:address>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
